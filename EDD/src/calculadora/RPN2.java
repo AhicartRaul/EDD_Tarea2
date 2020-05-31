@@ -15,7 +15,7 @@ poner los paréntesis para alterar la prioridad)
 vistas en clase.
 */
 
-//Versión 3
+//Versión 2
 
 class NodoPila {
 	public NodoPila(double dato, NodoPila abajo) {
@@ -46,23 +46,24 @@ public class RPN {
 
 	public double resultado() {
 		double a, b;
-
-		boolean digito = false;
+		int j;
 		for (int i = 0; i < commando.length(); i++) {
 // si es un digito
-			digito = Character.isDigit(commando.charAt(i));
-			if (digito) {
+
+			if (Character.isDigit(commando.charAt(i))) {
 				double numero;
 // obtener un string a partir del numero
 				String temp = "";
-				for (int j = 0; (j < 100)
+				for (j = 0; (j < 100)
 						&& (Character.isDigit(commando.charAt(i)) || (commando.charAt(i) == '.')); j++, i++) {
 					temp = temp + String.valueOf(commando.charAt(i));
-
 				}
 // convertir a double y añadir a la pila
 				numero = Double.parseDouble(temp);
 				pushPila(numero);
+
+				// Se eliminan tantos elseif para no tener que recorrerlos todos.
+
 			} else {
 				switch (commando.charAt(i)) {
 
